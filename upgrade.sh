@@ -2,7 +2,7 @@
 MYSQL_ROOT_PASSWORD=$(clpctl db:show:master-credentials | grep Password | awk '{print $4}')
 mysql -h127.0.0.1 -uroot -p$MYSQL_ROOT_PASSWORD -e "SELECT 1" > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "MySQL connection failed"
+  echo "MySQL connection failed."
   exit 1
 fi
 NUMBER_OF_SITES=$(sqlite3 /home/clp/htdocs/app/data/db.sq3 "SELECT COUNT(*) FROM site;")
